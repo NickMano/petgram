@@ -1,3 +1,11 @@
-dist/
-node_modules/
-./package-lock.json
+.DS_Store
+.vscode
+node_modules
+.cache
+dist
+.npm
+.eslintcache
+.env
+.storybook/
+build
+package-lock.json
