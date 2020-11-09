@@ -9,3 +9,5 @@ dist
 .storybook/
 build
 package-lock.json
+
+.vercel
