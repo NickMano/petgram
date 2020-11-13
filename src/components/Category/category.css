@@ -1,0 +1,16 @@
+.category {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    width: 72px;
+    text-align: center;
+}
+
+.category__image {
+    height: 72px;
+    border: 1px solid #ddd ;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+    box-shadow: 0px 10px 14px rgba(0, 0, 0, .2);
+}
