@@ -9,10 +9,17 @@
 }
 
 .category__image {
-    height: 72px;
-    border: 1px solid #ddd ;
+    box-sizing: border-box;
     border-radius: 50%;
     overflow: hidden;
     object-fit: cover;
     box-shadow: 0px 10px 14px rgba(0, 0, 0, .2);
+    height: 72px;
+    width: 72px;
+    border: 2.8px solid transparent;
+    border-radius: 50%;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, #E3B23C,#07BEB8);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
+
