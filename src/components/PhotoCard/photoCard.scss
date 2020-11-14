@@ -1,14 +1,15 @@
 @import '../../styles/base.scss';
 
 .photoCard {
+    margin-bottom: 16px;
+
     &__image-container {
-        border-radius: 8px;
         display: block;
         position: relative;
         overflow: hidden;
         height: 0;
         width: 100%;
-        padding: 56.25% 0 0 0;
+        padding: 72% 0 0 0;
     }
 
     &__image {
