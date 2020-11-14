@@ -1,0 +1,32 @@
+@import '../../styles/base.scss';
+
+.photoCard {
+    &__image-container {
+        border-radius: 8px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        width: 100%;
+        padding: 56.25% 0 0 0;
+    }
+
+    &__image {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        top: 0;
+    }
+
+    &__button {
+        display: flex;
+        align-items: center;
+        padding-top: 8px;
+        
+        & svg {
+            margin-right: 4px;
+        }
+    }
+
+}
