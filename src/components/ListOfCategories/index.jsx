@@ -1,6 +1,6 @@
 import React from 'react';
 import Category from '../Category';
-import './listOfCategories.css';
+import './listOfCategories.scss';
 
 const ListOfCategories = () => (
   <ul className="listOfCategories">

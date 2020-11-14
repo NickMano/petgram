@@ -1,5 +1,5 @@
 import React from 'react';
-import './category.css';
+import './category.scss';
 
 const DEFAULT_IMAGE = 'https://i.imgur.com/dJa0Hpl.jpg';
 
