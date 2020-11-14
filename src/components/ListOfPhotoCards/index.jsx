@@ -1,10 +1,16 @@
 import React from 'react';
-import ListOfCategories from '../ListOfCategories';
 import PhotoCard from '../PhotoCard';
+import { photos } from '../../../api/db.json';
 
 const ListOfPhotoCards = () => (
   <ul>
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((photoCard) => (<PhotoCard />))}
+    {photos.map((photoCard) => (
+      <PhotoCard
+        key={photoCard.id}
+        src={photoCard.src}
+        likes={photoCard.likes}
+      />
+    ))}
   </ul>
 );
 
