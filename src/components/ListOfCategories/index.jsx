@@ -10,14 +10,36 @@ const ListOfCategories = () => {
     const data = await response.json();
     setCategories(data);
   }, []);
-  return (
-    <ul className="listOfCategories">
+
+  const [showFixed, setShowFixed] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const newShowFixed = window.scrollY > 200;
+      if (newShowFixed !== showFixed) { setShowFixed(newShowFixed); }
+    };
+    document.addEventListener('scroll', onScroll);
+
+    return () => {
+      document.removeEventListener('scroll', onScroll);
+    };
+  }, [showFixed]);
+
+  const renderList = (fixed) => (
+    <ul className={`listOfCategories ${fixed ? 'fixed' : ''}`}>
       {categories.map((category) => (
         <li className="listOfCategories__item" key={category.id}>
           <Category cover={category.cover} emoji={category.emoji} path={category.path} />
         </li>
       ))}
     </ul>
+  );
+
+  return (
+    <>
+      {renderList()}
+      {showFixed && renderList(true)}
+    </>
   );
 };
 
