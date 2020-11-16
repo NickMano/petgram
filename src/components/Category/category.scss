@@ -21,5 +21,9 @@
     background-image: linear-gradient(white, white), radial-gradient(circle at top left, #E3B23C,#07BEB8);
     background-origin: border-box;
     background-clip: content-box, border-box;
+
+    &.loading {
+        background-image: none;
+    } 
 }
 
