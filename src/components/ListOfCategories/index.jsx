@@ -2,17 +2,25 @@ import React, { useEffect, useState } from 'react';
 import Category from '../Category';
 import './listOfCategories.scss';
 
-const ListOfCategories = () => {
+const useCategoriesData = () => {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
+    setLoading(true);
     const response = await fetch('https://petgram-server-nem.nickmano.vercel.app/categories');
     const data = await response.json();
     setCategories(data);
+    setLoading(false);
   }, []);
 
-  const [showFixed, setShowFixed] = useState(false);
+  return { categories, loading };
+};
 
+const ListOfCategories = () => {
+  const { categories, loading } = useCategoriesData();
+
+  const [showFixed, setShowFixed] = useState(false);
   useEffect(() => {
     const onScroll = () => {
       const newShowFixed = window.scrollY > 200;
@@ -34,6 +42,18 @@ const ListOfCategories = () => {
       ))}
     </ul>
   );
+
+  if (loading) {
+    return (
+      <ul className="listOfCategories">
+        {[1, 2, 3, 4, 5].map((category) => (
+          <li className="listOfCategories__item" key={category}>
+            <Category loading />
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   return (
     <>
