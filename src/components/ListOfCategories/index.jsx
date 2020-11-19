@@ -1,26 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Category from '../Category';
 import './listOfCategories.scss';
-
-const useCategoriesData = () => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(async () => {
-    setLoading(true);
-    const response = await fetch('https://petgram-server-nem.nickmano.vercel.app/categories');
-    const data = await response.json();
-    setCategories(data);
-    setLoading(false);
-  }, []);
-
-  return { categories, loading };
-};
+import useFetchData from '../../hooks/useFetchData';
 
 const ListOfCategories = () => {
-  const { categories, loading } = useCategoriesData();
+  const [categories, loading] = useFetchData('https://petgram-server-nem.nickmano.vercel.app/categories');
 
   const [showFixed, setShowFixed] = useState(false);
+
   useEffect(() => {
     const onScroll = () => {
       const newShowFixed = window.scrollY > 200;
