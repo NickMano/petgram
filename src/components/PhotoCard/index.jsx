@@ -3,24 +3,13 @@ import PropTypes from 'prop-types';
 import './photoCard.scss';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import useNearScreen from '../../hooks/useNearScreen';
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png';
 
 const PhotoCard = ({ src, likes, id }) => {
   const ref = useRef(null);
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    const observer = new window.IntersectionObserver((entries) => {
-      const { isIntersecting } = entries[0];
-      if (isIntersecting) {
-        setShow(true);
-        observer.disconnect();
-      }
-    });
-
-    observer.observe(ref.current);
-  }, []);
+  const show = useNearScreen(ref);
 
   const [liked, setLiked] = useLocalStorage(`like-${id}`, false);
   const IconHeart = liked ? AiFillHeart : AiOutlineHeart;
