@@ -23,7 +23,7 @@ const PhotoCard = ({ src, likes, id }) => {
         </div>
         <button type="button" className="photoCard__button" onClick={() => setLiked(!liked)}>
           <IconHeart size="24px" />
-          {likes}
+          {liked ? likes + 1 : likes}
           {' '}
           likes!
         </button>
