@@ -9,6 +9,7 @@ const ListOfPhotoCards = () => (
         key={photoCard.id}
         src={photoCard.src}
         likes={photoCard.likes}
+        id={photoCard.id}
       />
     ))}
   </ul>
