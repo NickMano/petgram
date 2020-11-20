@@ -36,7 +36,7 @@ const PhotoCard = ({ src, likes, id }) => {
 PhotoCard.propTypes = {
   src: PropTypes.string,
   likes: PropTypes.number,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 PhotoCard.defaultProps = {
