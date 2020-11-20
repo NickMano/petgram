@@ -21,7 +21,7 @@ const PhotoCard = ({ src, likes, id }) => {
         <div className="photoCard__image-container fade-in">
           <img src={src} alt="photoCard" className="photoCard__image" />
         </div>
-        <button type="button" className="photoCard__button" onClick={() => setLiked(!liked)}>
+        <button type="button" className="photoCard__button fade-in" onClick={() => setLiked(!liked)}>
           <IconHeart size="24px" />
           {liked ? likes + 1 : likes}
           {' '}
