@@ -4,14 +4,20 @@ import './photoCard.scss';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import useNearScreen from '../../hooks/useNearScreen';
+import { toggleLikeMutation } from '../../queries';
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png';
 
 const PhotoCard = ({ src, likes, id }) => {
   const [show, ref] = useNearScreen();
-
   const [liked, setLiked] = useLocalStorage(`like-${id}`, false);
-  const IconHeart = liked ? AiFillHeart : AiOutlineHeart;
+
+  const [toggleLike] = useMutation(toggleLikeMutation, { variables: { input: { id } } });
+
+  const handleFavClick = () => {
+    if (!liked) toggleLike();
+    setLiked(!liked);
+  };
 
   return (
     <article className="photoCard" ref={ref}>

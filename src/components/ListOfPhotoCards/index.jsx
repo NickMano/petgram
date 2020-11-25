@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import PhotoCard from '../PhotoCard';
 import Loading from '../Loading';
-import getPhotos from '../../queries/getPhotos';
+import { getPhotos } from '../../queries';
 
 const ListOfPhotoCards = () => {
   const { data, loading, error } = useQuery(getPhotos);
