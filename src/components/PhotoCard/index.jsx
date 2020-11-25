@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './photoCard.scss';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import useLocalStorage from '../../hooks/useLocalStorage';
+import { useMutation } from '@apollo/react-hooks';
 import useNearScreen from '../../hooks/useNearScreen';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import FavButton from '../FavButton';
 import { toggleLikeMutation } from '../../queries';
 
 const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png';
@@ -27,12 +28,7 @@ const PhotoCard = ({ src, likes, id }) => {
         <div className="photoCard__image-container fade-in">
           <img src={src} alt="photoCard" className="photoCard__image" />
         </div>
-        <button type="button" className="photoCard__button fade-in" onClick={() => setLiked(!liked)}>
-          <IconHeart size="24px" />
-          {liked ? likes + 1 : likes}
-          {' '}
-          likes!
-        </button>
+        <FavButton likes={likes} liked={liked} onClick={handleFavClick} />
       </>
       )}
     </article>
