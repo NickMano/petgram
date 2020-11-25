@@ -9,5 +9,6 @@ dist
 .storybook/
 build
 package-lock.json
+yarn.lock
 
 .vercel
