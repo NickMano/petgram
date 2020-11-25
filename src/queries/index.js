@@ -1,8 +1,20 @@
 import { gql } from 'apollo-boost';
 
 const getPhotos = gql`
-  query getPhotos {
-    photos {
+  query getPhotos($categoryId: ID) {
+    photos(categoryId: $categoryId) {
+      id
+      categoryId
+      src
+      likes
+      userId
+      liked
+    }
+}`;
+
+const getPhoto = gql`
+  query getPhoto($photoId: ID!) {
+    photo(id: $photoId) {
       id
       categoryId
       src
@@ -22,4 +34,4 @@ mutation likeAnonymousPhoto($input: LikePhoto!) {
 }
 `;
 
-export { getPhotos, toggleLikeMutation };
+export { getPhotos, getPhoto, toggleLikeMutation };
