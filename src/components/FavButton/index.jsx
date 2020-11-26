@@ -5,7 +5,6 @@ import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 const FavButton = ({ liked, likes, onClick }) => {
   const IconHeart = liked ? AiFillHeart : AiOutlineHeart;
 
-  console.log(`button -> ${liked}`);
   return (
     <button type="button" className="photoCard__button fade-in" onClick={onClick}>
       <IconHeart size="24px" />
