@@ -1,11 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
+import PropTypes from 'prop-types';
 import PhotoCard from '../PhotoCard';
 import Loading from '../Loading';
 import { getPhotos } from '../../queries';
 
-const ListOfPhotoCards = () => {
-  const { data, loading, error } = useQuery(getPhotos);
+const ListOfPhotoCards = ({ categoryId }) => {
+  const { data, loading, error } = useQuery(getPhotos, {
+    variables: { categoryId },
+  });
 
   if (loading) {
     return <Loading />;
@@ -27,6 +30,14 @@ const ListOfPhotoCards = () => {
       ))}
     </ul>
   );
+};
+
+ListOfPhotoCards.propTypes = {
+  categoryId: PropTypes.number,
+};
+
+ListOfPhotoCards.defaultProps = {
+  categoryId: null,
 };
 
 export default ListOfPhotoCards;
