@@ -1,0 +1,11 @@
+@import '../../styles/base.scss';
+
+.fav-button {
+    margin: 0 8px;
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    &--icon {
+        margin: 4px;
+    }
+}
