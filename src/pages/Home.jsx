@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ListOfCategories from '../components/ListOfCategories';
 import ListOfPhotoCards from '../components/ListOfPhotoCards';
-import Logo from '../components/Logo';
+import NavBar from '../components/NavBar';
 
 const Home = () => {
   const [category, setCategory] = useState(null);
@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <Logo />
+      <NavBar />
       <ListOfCategories handleChange={handleCategoryChange} />
       <ListOfPhotoCards categoryId={category} />
     </>
