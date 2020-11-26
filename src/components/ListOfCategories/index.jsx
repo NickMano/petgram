@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import Category from '../Category';
 import './listOfCategories.scss';
 import useFetchData from '../../hooks/useFetchData';
 
-const ListOfCategories = () => {
+const ListOfCategories = ({ handleChange }) => {
   const [categories, loading] = useFetchData('https://petgram-server-nem.nickmano.vercel.app/categories');
 
   const [showFixed, setShowFixed] = useState(false);
@@ -24,7 +25,13 @@ const ListOfCategories = () => {
     <ul className={`listOfCategories ${fixed ? 'fixed' : ''}`}>
       {categories.map((category) => (
         <li className="listOfCategories__item" key={category.id}>
-          <Category cover={category.cover} emoji={category.emoji} path={category.path} />
+          <Category
+            cover={category.cover}
+            emoji={category.emoji}
+            path={category.path}
+            id={category.id}
+            handleChange={handleChange}
+          />
         </li>
       ))}
     </ul>
@@ -48,6 +55,10 @@ const ListOfCategories = () => {
       {showFixed && renderList(true)}
     </>
   );
+};
+
+ListOfCategories.propTypes = {
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default ListOfCategories;

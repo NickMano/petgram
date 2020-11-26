@@ -6,10 +6,11 @@ const DEFAULT_IMAGE = 'https://i.imgur.com/dJa0Hpl.jpg';
 
 const Category = (props) => {
   const {
+    id,
     cover,
     emoji,
-    path,
     loading,
+    handleChange,
   } = props;
 
   if (loading) {
@@ -22,25 +23,27 @@ const Category = (props) => {
   }
 
   return (
-    <a className="category" href={path}>
+    <button type="button" className="category" onClick={() => handleChange(id)}>
       <img className="category__image" src={cover} alt={emoji} />
       {emoji}
-    </a>
+    </button>
   );
 };
 
 Category.propTypes = {
   cover: PropTypes.string,
   emoji: PropTypes.string,
-  path: PropTypes.string,
   loading: PropTypes.bool,
+  id: PropTypes.number,
+  handleChange: PropTypes.func,
 };
 
 Category.defaultProps = {
   cover: DEFAULT_IMAGE,
   emoji: '😃',
-  path: '',
   loading: false,
+  id: null,
+  handleChange: () => {},
 };
 
 export default Category;
