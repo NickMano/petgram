@@ -50,6 +50,12 @@ const ListOfCategories = ({ handleChange }) => {
     );
   }
 
+  if (error) {
+    return (
+      <p>Error</p>
+    );
+  }
+
   return (
     <>
       {renderList()}

@@ -34,7 +34,7 @@ Category.propTypes = {
   cover: PropTypes.string,
   emoji: PropTypes.string,
   loading: PropTypes.bool,
-  id: PropTypes.number,
+  id: PropTypes.string,
   handleChange: PropTypes.func,
 };
 
