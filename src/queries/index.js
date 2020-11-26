@@ -24,6 +24,17 @@ const getPhoto = gql`
     }
 }`;
 
+const getCategories = gql`
+  query getCategories {
+    categories {
+      id
+      cover
+      name
+      emoji
+      path
+    }
+}`;
+
 const toggleLikeMutation = gql`
 mutation likeAnonymousPhoto($input: LikePhoto!) {
   likeAnonymousPhoto(input: $input) {
@@ -34,4 +45,6 @@ mutation likeAnonymousPhoto($input: LikePhoto!) {
 }
 `;
 
-export { getPhotos, getPhoto, toggleLikeMutation };
+export {
+  getPhotos, getPhoto, getCategories, toggleLikeMutation,
+};

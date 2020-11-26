@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useQuery } from '@apollo/react-hooks';
 import Category from '../Category';
 import './listOfCategories.scss';
-import useFetchData from '../../hooks/useFetchData';
+import { getCategories } from '../../queries';
 
 const ListOfCategories = ({ handleChange }) => {
-  const [categories, loading] = useFetchData('https://petgram-server-nem.nickmano.vercel.app/categories');
+  const { data, loading, error } = useQuery(getCategories);
 
   const [showFixed, setShowFixed] = useState(false);
 
@@ -23,7 +24,7 @@ const ListOfCategories = ({ handleChange }) => {
 
   const renderList = (fixed) => (
     <ul className={`listOfCategories ${fixed ? 'fixed' : ''}`}>
-      {categories.map((category) => (
+      {data.categories.map((category) => (
         <li className="listOfCategories__item" key={category.id}>
           <Category
             cover={category.cover}
