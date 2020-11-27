@@ -6,7 +6,7 @@ import PhotoDetail from './pages/PhotoDetail';
 const App = () => (
   <Router>
     <Home path="/" />
-    <PhotoDetail path="photo/:photoId" />
+    <PhotoDetail path="/photo/:photoId" />
   </Router>
 );
 
