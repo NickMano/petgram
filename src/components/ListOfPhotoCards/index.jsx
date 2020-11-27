@@ -33,7 +33,7 @@ const ListOfPhotoCards = ({ categoryId }) => {
 };
 
 ListOfPhotoCards.propTypes = {
-  categoryId: PropTypes.number,
+  categoryId: PropTypes.string,
 };
 
 ListOfPhotoCards.defaultProps = {
