@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './photoCard.scss';
 import { useMutation } from '@apollo/react-hooks';
 import useNearScreen from '../../hooks/useNearScreen';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import FavButton from '../FavButton';
 import { toggleLikeMutation } from '../../queries';
+import './photoCard.scss';
+import PetPhoto from '../PetPhoto';
 
-const DEFAULT_IMAGE = 'https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png';
-
-const PhotoCard = ({ src, likes, id }) => {
+const PhotoCard = (props) => {
+  const {
+    src,
+    likes,
+    id,
+    loading,
+  } = props;
   const [show, ref] = useNearScreen();
   const [liked, setLiked] = useLocalStorage(`like-${id}`, false);
 
@@ -20,14 +25,21 @@ const PhotoCard = ({ src, likes, id }) => {
     setLiked(!liked);
   };
 
+  if (loading) {
+    return (
+      <article className="photoCard" ref={ref}>
+        <PetPhoto src={src} id={id} />
+        <FavButton likes={0} liked={false} onClick={handleFavClick} />
+      </article>
+    );
+  }
+
   return (
     <article className="photoCard" ref={ref}>
       {show
       && (
       <>
-        <div className="photoCard__image-container fade-in">
-          <img src={src} alt="photoCard" className="photoCard__image" />
-        </div>
+        <PetPhoto src={src} id={id} />
         <FavButton likes={likes} liked={liked} onClick={handleFavClick} />
       </>
       )}
@@ -38,12 +50,15 @@ const PhotoCard = ({ src, likes, id }) => {
 PhotoCard.propTypes = {
   src: PropTypes.string,
   likes: PropTypes.number,
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 PhotoCard.defaultProps = {
-  src: DEFAULT_IMAGE,
+  src: null,
   likes: 0,
+  id: null,
+  loading: false,
 };
 
 export default PhotoCard;

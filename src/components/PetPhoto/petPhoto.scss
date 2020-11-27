@@ -1,0 +1,20 @@
+@import '../../styles/base.scss';
+
+.photoCard {
+    &__image-container {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        width: 100%;
+        padding: 72% 0 0 0;
+    }
+    
+    &__image {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        top: 0;
+    }
+}
