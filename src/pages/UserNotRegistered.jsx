@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
+import UserForm from '../components/UserForm';
 import LoginContext from '../context/LoginContext';
 
 const UserNotRegistered = () => {
   const { isAuth, setIsAuth } = useContext(LoginContext);
 
-  const handleClick = () => {
+  const handleSubmit = () => {
     setIsAuth(!isAuth);
   };
 
   return (
     <>
       <p>UserNotRegistered</p>
-      <button type="button" onClick={handleClick}>login </button>
+      <UserForm onSubmit={handleSubmit} />
     </>
   );
 };
