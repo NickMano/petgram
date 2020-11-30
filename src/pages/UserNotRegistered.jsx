@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import UserForm from '../components/UserForm';
 import LoginContext from '../context/LoginContext';
+import NavBar from '../components/NavBar';
 
 const UserNotRegistered = () => {
   const { isAuth, setIsAuth } = useContext(LoginContext);
@@ -10,10 +11,10 @@ const UserNotRegistered = () => {
   };
 
   return (
-    <>
-      <p>UserNotRegistered</p>
+    <div style={{ paddingBottom: '50px' }}>
+      <NavBar />
       <UserForm onSubmit={handleSubmit} />
-    </>
+    </div>
   );
 };
 

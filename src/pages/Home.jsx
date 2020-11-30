@@ -11,11 +11,11 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div style={{ paddingBottom: '50px' }}>
       <NavBar />
       <ListOfCategories handleChange={handleCategoryChange} />
       <ListOfPhotoCards categoryId={category} />
-    </>
+    </div>
   );
 };
 
