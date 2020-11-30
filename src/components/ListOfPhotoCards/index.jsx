@@ -2,7 +2,6 @@ import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import PropTypes from 'prop-types';
 import PhotoCard from '../PhotoCard';
-import Loading from '../Loading';
 import { getPhotos } from '../../queries';
 
 const ListOfPhotoCards = ({ categoryId }) => {
@@ -11,7 +10,11 @@ const ListOfPhotoCards = ({ categoryId }) => {
   });
 
   if (loading) {
-    return <Loading />;
+    return (
+      <ul>
+        {[1, 2, 3, 4].map((photoCard) => <PhotoCard key={photoCard} loading />)}
+      </ul>
+    );
   }
 
   if (error) {
