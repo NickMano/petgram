@@ -1,25 +1,27 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import PropTypes from 'prop-types';
+import * as animationData from './cat-lottie.json';
 
 const Loading = ({ isPlay }) => {
-  <div className="lds-default__container">
-    <div className="lds-default">
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
-      <div />
+  const defaultOptions = {
+    loop: false,
+    autoplay: false,
+    animationData: animationData.default,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
-      <div />
-      <div />
-      <div />
-      <div />
-    </div>
-  </div>
+    <Lottie
+      options={defaultOptions}
+      width={240}
+      height="auto"
+      isStopped={!isPlay}
+    />
   );
+};
 
 Loading.propTypes = {
   isPlay: PropTypes.bool,
