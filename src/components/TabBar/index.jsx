@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 import { BsPerson } from 'react-icons/bs';
-import { AiOutlineHeart, AiFillHome } from 'react-icons/ai';
+import { AiOutlineHeart, AiOutlineHome } from 'react-icons/ai';
 import { Link } from '@reach/router';
 
 const TabBar = () => {
@@ -10,7 +10,7 @@ const TabBar = () => {
   return (
     <div className="tab-bar">
       <Link to="/" className="tab-bar__button">
-        <AiFillHome size={SIZE} />
+        <AiOutlineHome size={SIZE} />
       </Link>
       <Link to="/favs" className="tab-bar__button">
         <AiOutlineHeart size={SIZE} />
