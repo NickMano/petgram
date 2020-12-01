@@ -37,10 +37,11 @@ const UserForm = ({ onSubmit }) => {
   return (
     <div className={cssClassName}>
       <Loading isPlay={isPlay} />
+      <p>Log in to see photos and videos from pets.</p>
       <form onSubmit={handleSubmit} className={`${cssClassName}--form`}>
         <input placeholder="Mail" value={mail.value} onChange={mail.onChange} className={mailClassName} />
         <input placeholder="Password" type="password" value={password.value} onChange={password.onChange} className="user-form--input" />
-        <button type="submit" className="user-form--button">Login</button>
+        <button type="submit" className="user-form--button">Log in</button>
       </form>
     </div>
   );

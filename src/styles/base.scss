@@ -1,5 +1,6 @@
 @import './animations.scss';
 @import './loading.scss';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
 ul, li, h1, h2, h3, p, button {
     margin: 0;
@@ -23,4 +24,5 @@ body {
     overscroll-behavior: none;
     width: 100%;
     max-width: 540px;
+    font-family: 'Nunito', sans-serif;
 }
