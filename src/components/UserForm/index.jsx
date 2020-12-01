@@ -1,32 +1,23 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import useInputForm from '../../hooks/useInputForm';
 import './style.scss';
 import Loading from '../Loading';
-
-const isValidMail = (mail) => new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(mail);
+import InputWithValidation from '../MailInput';
 
 const UserForm = ({ onSubmit }) => {
-  const password = useInputForm('');
-  const mail = useInputForm('');
-  const cssClassName = 'user-form';
-  const [mailClassName, setMailClassName] = useState(`${cssClassName}--input`);
   const [isPlay, setIsPlay] = useState(false);
 
+  const [MailComponent, isValidEmail] = InputWithValidation('Email', '', (input) => new RegExp(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}/g).test(input));
+  const [PasswordComponent, isValidEPassword] = InputWithValidation('Password', 'password', (input) => input.trim().length >= 8);
+
   const handleSubmit = (e) => {
-    setMailClassName(`${cssClassName}--input`);
-    let isValidUser = true;
-
-    if (mail.value.trim().length === 0 || !isValidMail(mail.value)) {
-      isValidUser = false;
-      setMailClassName(`${cssClassName}--input error`);
-    }
-
     e.preventDefault();
+    let isValid = true;
 
-    if (!isValidUser) {
-      console.log('error');
-    } else {
+    if (!isValidEmail()) { isValid = false; }
+    if (!isValidEPassword()) { isValid = false; }
+
+    if (isValid) {
       setIsPlay(true);
       setTimeout(() => {
         onSubmit();
@@ -35,12 +26,12 @@ const UserForm = ({ onSubmit }) => {
   };
 
   return (
-    <div className={cssClassName}>
+    <div className="user-form">
       <Loading isPlay={isPlay} />
       <p>Log in to see photos and videos from pets.</p>
-      <form onSubmit={handleSubmit} className={`${cssClassName}--form`}>
-        <input placeholder="Mail" value={mail.value} onChange={mail.onChange} className={mailClassName} />
-        <input placeholder="Password" type="password" value={password.value} onChange={password.onChange} className="user-form--input" />
+      <form onSubmit={handleSubmit} className="user-form--form">
+        {MailComponent}
+        {PasswordComponent}
         <button type="submit" className="user-form--button">Log in</button>
       </form>
     </div>
