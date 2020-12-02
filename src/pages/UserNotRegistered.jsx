@@ -30,7 +30,7 @@ const UserNotRegistered = () => {
     <p style={{ textAlign: 'center' }}>
       {isLogin ? 'Don\'t have an account?' : 'Have an account?' }
       {' '}
-      <button type="button" onClick={() => setIsLogin(!isLogin)}>{LoginMsg}</button>
+      <button style={{ color: '#07BEB8', fontSize: 'inherit' }} type="button" onClick={() => setIsLogin(!isLogin)}>{LoginMsg}</button>
     </p>
   );
 
