@@ -4,7 +4,7 @@ import './style.scss';
 import Loading from '../Loading';
 import InputWithValidation from '../InputWithValidation';
 
-const UserForm = ({ onSubmit, buttonTitle }) => {
+const UserForm = ({ onSubmit, buttonTitle, loading }) => {
   const [isPlay, setIsPlay] = useState(false);
 
   const [MailComponent, mailValue, isValidEmail] = InputWithValidation(
@@ -38,7 +38,7 @@ const UserForm = ({ onSubmit, buttonTitle }) => {
       <form onSubmit={handleSubmit} className="user-form--form">
         {MailComponent}
         {PasswordComponent}
-        <button type="submit" className="user-form--button">{buttonTitle}</button>
+        <button type="submit" className="user-form--button" disabled={loading}>{buttonTitle}</button>
       </form>
     </div>
   );
@@ -47,6 +47,11 @@ const UserForm = ({ onSubmit, buttonTitle }) => {
 UserForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   buttonTitle: PropTypes.string.isRequired,
+  loading: PropTypes.bool,
+};
+
+UserForm.defaultProps = {
+  loading: false,
 };
 
 export default UserForm;

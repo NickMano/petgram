@@ -9,6 +9,10 @@
     align-items: center;
     justify-content: space-between;
 
+    &.disabled {
+        opacity: .3;
+    }
+
     &--form{
         display: flex;
         flex-direction: column;
@@ -39,6 +43,10 @@
         height: 48px;
         border-radius: 4px;
         font-weight: bold;
+
+        &:disabled {
+            opacity: .3;
+        }
     }
 
 }
