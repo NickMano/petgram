@@ -5,8 +5,8 @@ import LoginContext from '../context/LoginContext';
 import { signUpMutation } from '../queries';
 
 const UserNotRegistered = () => {
-  const { isAuth, setIsAuth } = useContext(LoginContext);
-  const [signUp] = useMutation(signUpMutation);
+  const { setIsAuth } = useContext(LoginContext);
+  const [signUp, { data, loading, error }] = useMutation(signUpMutation);
 
   const handleSubmit = async (email, password) => {
     const userCredentials = {
@@ -18,13 +18,12 @@ const UserNotRegistered = () => {
       },
     };
 
-    try {
-      await signUp(userCredentials);
-      setIsAuth(!isAuth);
-    } catch (error) {
-      console.error(error);
-    }
+    await signUp(userCredentials);
   };
+
+  if (data) { setIsAuth(data.signup); }
+
+  const errorMsg = error && 'Upss, a error was ocurred, try again.';
 
   return (
     <>
