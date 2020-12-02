@@ -24,13 +24,15 @@ const UserNotRegistered = () => {
   if (data) { setIsAuth(data.signup); }
 
   const errorMsg = error && 'Ups, a error was ocurred, try again.';
-  const LoginMsg = isLogin ? 'Sign In' : 'Log In';
+  const LoginMsg = isLogin ? 'Log In' : 'Sign In';
 
   const LoginTextComponent = (
     <p style={{ textAlign: 'center' }}>
       {isLogin ? 'Don\'t have an account?' : 'Have an account?' }
       {' '}
-      <button style={{ color: '#07BEB8', fontSize: 'inherit' }} type="button" onClick={() => setIsLogin(!isLogin)}>{LoginMsg}</button>
+      <button className="button-link" type="button" onClick={() => setIsLogin(!isLogin)}>
+        {isLogin ? 'Sign In' : 'Log In' }
+      </button>
     </p>
   );
 
