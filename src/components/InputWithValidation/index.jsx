@@ -31,6 +31,7 @@ const InputWithValidation = (placeholder, type, isValidInput) => {
         onChange={input.onChange}
         className={inputClassName}
       />,
+      input.value,
       handleSubmit,
     ]
   );
