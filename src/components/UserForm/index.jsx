@@ -34,7 +34,11 @@ const UserForm = ({ onSubmit, buttonTitle, loading }) => {
   return (
     <div className="user-form">
       <Loading isPlay={isPlay} />
-      <p>Log in to see photos and videos from pets.</p>
+      <p>
+        {buttonTitle}
+        {' '}
+        to see photos and videos from pets.
+      </p>
       <form onSubmit={handleSubmit} className="user-form--form">
         {MailComponent}
         {PasswordComponent}

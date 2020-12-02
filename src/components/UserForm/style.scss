@@ -1,13 +1,14 @@
 @import '../../styles/base.scss';
 
 .user-form {
-    margin: 64px 32px;
+    margin: 8px 32px;
     height: 64vh;
     min-height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
 
     &.disabled {
         opacity: .3;
@@ -40,7 +41,7 @@
         background-color: #07BEB8;
         color: white;
         font-size: large;
-        height: 48px;
+        height: 40px;
         border-radius: 4px;
         font-weight: bold;
 
