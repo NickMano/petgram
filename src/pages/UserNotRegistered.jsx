@@ -1,29 +1,25 @@
 import React, { useContext, useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
+import useLogin from '../hooks/useLogin';
 import UserForm from '../components/UserForm';
 import LoginContext from '../context/LoginContext';
-import { signUpMutation } from '../queries';
+import { signUpMutation, loginMutation } from '../queries';
+import '../styles/base.scss';
 
 const UserNotRegistered = () => {
   const { setIsAuth } = useContext(LoginContext);
   const [isLogin, setIsLogin] = useState(false);
-  const [signUp, { data, loading, error }] = useMutation(signUpMutation);
+  const mutation = isLogin ? loginMutation : signUpMutation;
+  const {
+    onSubmit, data, loading, error,
+  } = useLogin(mutation);
 
-  const handleSubmit = async (email, password) => {
-    const userCredentials = {
-      variables: {
-        input: {
-          email,
-          password,
-        },
-      },
-    };
-    await signUp(userCredentials);
+  const handleSubmit = (email, password) => {
+    onSubmit(email, password);
   };
 
-  if (data) { setIsAuth(data.signup); }
+  if (data) { setIsAuth(data); }
 
-  const errorMsg = error && 'Ups, a error was ocurred, try again.';
+  const errorMsg = error && error.message;
   const LoginMsg = isLogin ? 'Log In' : 'Sign In';
 
   const LoginTextComponent = (
