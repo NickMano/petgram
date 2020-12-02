@@ -27,9 +27,7 @@ const UserForm = ({ onSubmit, buttonTitle }) => {
 
     if (isValid) {
       setIsPlay(true);
-      setTimeout(() => {
-        onSubmit(mailValue, passwordValue);
-      }, 1000);
+      onSubmit(mailValue, passwordValue);
     }
   };
 
