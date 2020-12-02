@@ -42,9 +42,17 @@ mutation likeAnonymousPhoto($input: LikePhoto!) {
     liked,
     likes
   }
-}
-`;
+}`;
+
+const signUpMutation = gql`
+mutation signup($input:UserCredentials!) {
+  signup(input: $input)
+ }`;
 
 export {
-  getPhotos, getPhoto, getCategories, toggleLikeMutation,
+  getPhotos,
+  getPhoto,
+  getCategories,
+  toggleLikeMutation,
+  signUpMutation,
 };
