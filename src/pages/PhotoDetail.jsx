@@ -4,7 +4,6 @@ import { useParams } from '@reach/router';
 import PropTypes from 'prop-types';
 import { getPhoto } from '../queries';
 import PhotoCard from '../components/PhotoCard';
-import NavBar from '../components/NavBar';
 
 const PhotoDetail = (props) => {
   let { photoCard } = props;
@@ -17,31 +16,23 @@ const PhotoDetail = (props) => {
 
   if (error) {
     return (
-      <>
-        <NavBar />
-        <p>Error</p>
-      </>
+      <p>Error</p>
     );
   }
 
   if (!photoCard && loading) {
     return (
-      <>
-        <NavBar />
-        <PhotoCard loading />
-      </>
+      <PhotoCard loading />
     );
   }
 
   return (
-    <>
-      <NavBar />
-      <PhotoCard
-        src={photoCard.src}
-        likes={photoCard.likes}
-        id={photoCard.id}
-      />
-    </>
+
+    <PhotoCard
+      src={photoCard.src}
+      likes={photoCard.likes}
+      id={photoCard.id}
+    />
   );
 };
 

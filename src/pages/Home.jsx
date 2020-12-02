@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ListOfCategories from '../components/ListOfCategories';
 import ListOfPhotoCards from '../components/ListOfPhotoCards';
-import NavBar from '../components/NavBar';
 
 const Home = () => {
   const [category, setCategory] = useState(null);
@@ -11,11 +10,10 @@ const Home = () => {
   };
 
   return (
-    <div style={{ paddingBottom: '50px' }}>
-      <NavBar />
+    <>
       <ListOfCategories handleChange={handleCategoryChange} />
       <ListOfPhotoCards categoryId={category} />
-    </div>
+    </>
   );
 };
 
