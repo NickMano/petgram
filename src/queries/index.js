@@ -49,10 +49,16 @@ mutation signup($input:UserCredentials!) {
   signup(input: $input)
  }`;
 
+const loginMutation = gql`
+mutation login($input:UserCredentials!) {
+  login(input: $input)
+ }`;
+
 export {
   getPhotos,
   getPhoto,
   getCategories,
   toggleLikeMutation,
   signUpMutation,
+  loginMutation,
 };
