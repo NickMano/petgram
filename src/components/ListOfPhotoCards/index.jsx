@@ -7,6 +7,7 @@ import { getPhotos } from '../../queries';
 const ListOfPhotoCards = ({ categoryId }) => {
   const { data, loading, error } = useQuery(getPhotos, {
     variables: { categoryId },
+    fetchPolicy: 'cache-and-network',
   });
 
   if (loading) {
@@ -28,6 +29,7 @@ const ListOfPhotoCards = ({ categoryId }) => {
           key={photoCard.id}
           src={photoCard.src}
           likes={photoCard.likes}
+          liked={photoCard.liked}
           id={photoCard.id}
         />
       ))}
