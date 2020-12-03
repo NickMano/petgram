@@ -6,7 +6,14 @@ import App from './App';
 import { LoginContextProvider } from './context/LoginContext';
 
 const client = new ApolloClient(
-  { uri: 'https://petgram-server-nem.nickmano.vercel.app/graphql' },
+  {
+    uri: 'https://petgram-server-nem.nickmano.vercel.app/graphql',
+    request: (operation) => {
+      const token = window.sessionStorage.getItem('token');
+      const authorization = token ? `bearer ${token}` : '';
+      operation.setContext({ headers: { authorization } });
+    },
+  },
 );
 
 ReactDOM.render(
