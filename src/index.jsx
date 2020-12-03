@@ -13,6 +13,9 @@ const client = new ApolloClient(
       const authorization = token ? `bearer ${token}` : '';
       operation.setContext({ headers: { authorization } });
     },
+    onError: () => {
+      window.sessionStorage.removeItem('token');
+    },
   },
 );
 
