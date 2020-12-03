@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 const LoginContext = React.createContext(false);
 
 export function LoginContextProvider({ children }) {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(window.sessionStorage.getItem('token'));
+
+  if (isAuth) { window.sessionStorage.setItem('token', isAuth); }
 
   return (
     <LoginContext.Provider value={{ isAuth, setIsAuth }}>

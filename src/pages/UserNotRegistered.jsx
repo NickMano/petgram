@@ -17,7 +17,7 @@ const UserNotRegistered = () => {
     onSubmit(email, password);
   };
 
-  if (data) { setIsAuth(data); }
+  if (data) { setIsAuth(data.signup ? data.signup : data.login); }
 
   const errorMsg = error && error.message;
   const LoginMsg = isLogin ? 'Log In' : 'Sign In';
