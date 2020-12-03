@@ -6,10 +6,23 @@ const LoginContext = React.createContext(false);
 export function LoginContextProvider({ children }) {
   const [isAuth, setIsAuth] = useState(window.sessionStorage.getItem('token'));
 
-  if (isAuth) { window.sessionStorage.setItem('token', isAuth); }
+  const activateAuth = (token) => {
+    setIsAuth(true);
+    window.sessionStorage.setItem('token', token);
+  };
+
+  const removeAuth = () => {
+    window.sessionStorage.removeItem('token');
+  };
+
+  const value = {
+    isAuth,
+    activateAuth,
+    removeAuth,
+  };
 
   return (
-    <LoginContext.Provider value={{ isAuth, setIsAuth }}>
+    <LoginContext.Provider value={value}>
       {children}
     </LoginContext.Provider>
   );

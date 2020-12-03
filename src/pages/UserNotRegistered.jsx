@@ -6,7 +6,7 @@ import { signUpMutation, loginMutation } from '../queries';
 import '../styles/base.scss';
 
 const UserNotRegistered = () => {
-  const { setIsAuth } = useContext(LoginContext);
+  const { activateAuth } = useContext(LoginContext);
   const [isLogin, setIsLogin] = useState(false);
   const mutation = isLogin ? loginMutation : signUpMutation;
   const {
@@ -17,7 +17,7 @@ const UserNotRegistered = () => {
     onSubmit(email, password);
   };
 
-  if (data) { setIsAuth(data.signup ? data.signup : data.login); }
+  if (data) { activateAuth(data.signup ? data.signup : data.login); }
 
   const errorMsg = error && error.message;
   const LoginMsg = isLogin ? 'Log In' : 'Sign In';
