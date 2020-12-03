@@ -7,7 +7,6 @@ const getPhotos = gql`
       categoryId
       src
       likes
-      userId
       liked
     }
 }`;
@@ -19,7 +18,6 @@ const getPhoto = gql`
       categoryId
       src
       likes
-      userId
       liked
     }
 }`;
@@ -38,8 +36,8 @@ const getCategories = gql`
 const toggleLikeMutation = gql`
 mutation likePhoto($input: LikePhoto!) {
   likePhoto(input: $input) {
-    id,
-    liked,
+    id
+    liked
     likes
   }
 }`;
