@@ -33,6 +33,18 @@ const getCategories = gql`
     }
 }`;
 
+const getFavs = gql`
+  query getFavs {
+    favs{
+      id
+      categoryId
+      src
+      likes
+      liked
+    }
+  }
+`;
+
 const toggleLikeMutation = gql`
 mutation likePhoto($input: LikePhoto!) {
   likePhoto(input: $input) {
@@ -56,6 +68,7 @@ export {
   getPhotos,
   getPhoto,
   getCategories,
+  getFavs,
   toggleLikeMutation,
   signUpMutation,
   loginMutation,
