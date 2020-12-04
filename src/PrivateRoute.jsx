@@ -1,15 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, Suspense } from 'react';
 import { Router } from '@reach/router';
-import Favs from './pages/Favs';
-import User from './pages/User';
-import UserNotRegistered from './pages/UserNotRegistered';
 import LoginContext from './context/LoginContext';
+
+const UserNotRegistered = React.lazy(() => import('./pages/UserNotRegistered'));
+const Favs = React.lazy(() => import('./pages/Favs'));
+const User = React.lazy(() => import('./pages/User'));
 
 const PrivateRoute = () => {
   const { isAuth } = useContext(LoginContext);
 
   return (
-    <>
+    <Suspense fallback={<div />}>
       <Router>
         {isAuth
           ? (
@@ -23,10 +24,9 @@ const PrivateRoute = () => {
               <UserNotRegistered path="/favs" />
               <UserNotRegistered path="/user" />
             </>
-
           )}
       </Router>
-    </>
+    </Suspense>
   );
 };
 
