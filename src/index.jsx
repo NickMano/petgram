@@ -13,9 +13,11 @@ const client = new ApolloClient(
       const authorization = token ? `bearer ${token}` : '';
       operation.setContext({ headers: { authorization } });
     },
-    onError: () => {
-      window.sessionStorage.removeItem('token');
-      window.location.href = '/login';
+    onError: ({ networkError }) => {
+      if (networkError) {
+        window.sessionStorage.removeItem('token');
+        window.location.href = '/';
+      }
     },
   },
 );
