@@ -5,7 +5,7 @@ import Category from '../Category';
 import './listOfCategories.scss';
 import { getCategories } from '../../queries';
 
-const ListOfCategories = ({ handleChange }) => {
+const ListOfCategoriesComponent = ({ handleChange }) => {
   const { data, loading, error } = useQuery(getCategories);
 
   const [showFixed, setShowFixed] = useState(false);
@@ -64,8 +64,10 @@ const ListOfCategories = ({ handleChange }) => {
   );
 };
 
-ListOfCategories.propTypes = {
+ListOfCategoriesComponent.propTypes = {
   handleChange: PropTypes.func.isRequired,
 };
+
+const ListOfCategories = React.memo(ListOfCategoriesComponent);
 
 export default ListOfCategories;
